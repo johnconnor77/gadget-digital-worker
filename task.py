@@ -1,5 +1,5 @@
 from config import OUTPUT_FOLDER
-from libraries.common import log_message, print_version, create_or_clean_dir, get_bitwarden_data, capture_page_screenshot
+from libraries.common import log_message, print_version, create_or_clean_dir, capture_page_screenshot
 from libraries.process import Process
 
 
@@ -8,8 +8,7 @@ def main():
     Main function which calls all other functions.
     """""
     create_or_clean_dir(OUTPUT_FOLDER)
-    credentials = get_bitwarden_data()
-    process = Process(credentials)
+    process = Process()
     try:
         process.start()
     except Exception as e:
