@@ -1,4 +1,4 @@
-from libraries.common import act_on_element, capture_page_screenshot, log_message, check_file_download_complete, files
+from libraries.common import act_on_element, capture_page_screenshot, log_message, check_file_download_complete, files, file_system, pdf
 from config import OUTPUT_FOLDER
 import pandas as pd
 
@@ -50,5 +50,16 @@ class GobPe:
             xpath_2_top_parent = "/parent::h3/parent::div/parent::div/parent::div/following-sibling::div"
             xpath_2_button = "/a[@class='bg-transparent border-2 border-blue-700 font-bold py-2 px-3 text-blue-700 flex']"
             act_on_element(xpath_2_name+xpath_2_top_parent+xpath_2_button, "click_element")
+
+    def pdf_information(self):
+        """
+        Extracts information from the PDF's downloaded from ONPE.
+        """
+
+        files_downloaded = file_system.find_files("{}/*.{}".format(OUTPUT_FOLDER, "pdf"))
+        for file_downloaded in files_downloaded:
+            text_dict = pdf.get_text_from_pdf(file_downloaded)
+            pages_amount = len(text_dict)
+            print(f"file_name: {file_system.get_file_name(file_downloaded)} and amount_pages: {pages_amount}")
 
 

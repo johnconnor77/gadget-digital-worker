@@ -29,6 +29,8 @@ class Process:
         log_message("Extract Info from certain dates")
         gob_pe.extract_info_onpe(date_since=datetime.datetime(2021, 10, 28).strftime("%d-%m-%Y"),
                                  date_to=datetime.datetime.now().strftime("%d-%m-%Y"))
+        log_message("Outdata from PDF's Downloaded")
+        gob_pe.pdf_information()
 
     def finish(self):
         log_message("DW Process Finished")
