@@ -15,7 +15,7 @@ class Process:
             "plugins.always_open_pdf_externally": True,
             "download.prompt_for_download": False
         }
-        browser.open_available_browser(preferences = prefs, browser_selection=["firefox"])#
+        browser.open_available_browser(preferences = prefs) #browser_selection=["firefox"]
         browser.set_window_size(1920, 1080)
         browser.maximize_browser_window()
 
